@@ -27,8 +27,6 @@ set(CMAKE_EXPORT_COMPILE_COMMANDS "on")
 include_directories(${QT_INCLUDES} ${CMAKE_CURRENT_BINARY_DIR})
 include_directories(${Boost_INCLUDE_DIR})
 
-add_definitions(-ggdb)
-
 # Use c++11 support.
 # found on
 # http://stackoverflow.com/questions/10984442/how-to-detect-c11-support-of-a-compiler-with-cmake
@@ -51,7 +49,7 @@ endif()
 
 if(CMAKE_COMPILER_IS_GNUCXX)
 	#add some warnings
-	add_definitions(-Wall -Wextra -pedantic -Werror -ggdb -Wfatal-errors -Wold-style-cast -Woverloaded-virtual)
+	add_definitions(-Wall -Wextra -pedantic -Werror -Wfatal-errors -Wold-style-cast -Woverloaded-virtual)
 	#I like these for my code, but Qt doesnt compile with them
 	# add_definitions( -Weffc++ )
 	add_definitions(-Wno-effc++)
@@ -63,10 +61,6 @@ if( "${CMAKE_BUILD_TYPE}" MATCHES "^Debug$" )
   # do nothing
 else()
   add_definitions(-DQT_NO_DEBUG_OUTPUT)
-endif()
-
-if ( DISABLE_CXX11_ABI )
-	add_definitions(-D_GLIBCXX_USE_CXX11_ABI=0)
 endif()
 
 ### Version-number inclusion logic.
@@ -106,7 +100,7 @@ if( NOT DSPDFVIEWER_VERSION )
 	# Use default
 
 	# TODO: Keep me updated!
-	set(DSPDFVIEWER_VERSION "1.13-rc0")
+	set(DSPDFVIEWER_VERSION "1.14-unreleased")
 	message(STATUS "Embedding version number ${DSPDFVIEWER_VERSION}. If you want to override this, "
 		"for example to embed the git revision you built from, please pass "
 		"-DDSPDFVIEWER_VERSION=1.2.3.4.5 to the cmake command.")
@@ -133,3 +127,6 @@ install(TARGETS	dspdfviewer
 
 install(FILES docs/dspdfviewer.1
 	DESTINATION share/man/man1)
+
+install(FILES dspdfviewer.desktop
+	DESTINATION share/applications)
