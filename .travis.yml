@@ -1,12 +1,25 @@
 language: cpp
 sudo: required
+os:
+    - linux
+    - osx
+compiler:
+    - clang
+    - gcc
+env:
+    - CMAKE_PARAMETERS="-DUseQtFive=ON"
+    - CMAKE_PARAMETERS="-DUseQtFive=OFF"
+#    - BUILDSYSTEM=outside
+matrix:
+  fast_finish: true
+  allow_failures:
+    - env: CMAKE_PARAMETERS="-DUseQtFive=ON"
+  exclude:
+    - os: osx
+      env: CMAKE_PARAMETERS="-DUseQtFive=ON"
+    - os: osx
+      compiler: gcc
 install:
- - sudo apt-get update
- - sudo apt-get install --no-install-recommends devscripts equivs
- - sudo mk-build-deps --install --remove
-
-# test both fallback and debian specific build system
-
+ - _travis/install_dependencies
 script:
- - ( TEMPDIR=$(mktemp -d) && git archive HEAD | tar -C $TEMPDIR -xv && mkdir "$TEMPDIR/build" && cd "$TEMPDIR/build" && cmake .. && make )
- - debuild -tc -uc -us
+ - _travis/compile
