@@ -44,5 +44,9 @@
 		<param name="Name" value="See also">
 		<param name="Local" value="seealso.html">
 		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="Licenses">
+		<param name="Local" value="license.html">
+		</OBJECT>
 </UL>
 </BODY></HTML>
