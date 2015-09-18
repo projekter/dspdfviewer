@@ -30,20 +30,16 @@ option(UseQtFive "Build with Qt5 and libpoppler-qt5" OFF)
 if(UseQtFive)
 	#qt5
 	message(STATUS "Using Qt5 and libpoppler-qt5")
-<<<<<<< HEAD
-     set(CMAKE_PREFIX_PATH "C:/Qt/Static/qtbase")
-	find_package(Qt5Core REQUIRED)
-=======
+	set(CMAKE_PREFIX_PATH "C:/Qt/Static/qtbase")
 	find_package(Qt5Core 5.1.1 REQUIRED)
 	# On lower versions, QTBUG-32100 prevents compilation at least on clang
 	# https://bugreports.qt.io/browse/QTBUG-32100
->>>>>>> origin/master
 	find_package(Qt5Gui REQUIRED)
 	find_package(Qt5Widgets REQUIRED)
-     find_package(Qt5XML REQUIRED)	
+	find_package(Qt5XML REQUIRED)	
 	#pkg_search_module(POPPLER REQUIRED poppler-qt5)
-     set(POPPLER_LIBRARIES optimized "C:/dspdf/poppler/poppler/lib/poppler.lib" debug "C:/dspdf/poppler/poppler/lib/popplerd.lib" optimized "C:/dspdf/poppler/poppler/lib/poppler-qt5.lib" debug "C:/dspdf/poppler/poppler/lib/poppler-qt5d.lib" optimized "C:/dspdf/poppler/deps/cairo/lib/cairo-static.lib" debug "C:/dspdf/poppler/deps/cairo/lib/cairo-staticd.lib" optimized "C:/dspdf/poppler/deps/freetype/lib/freetype.lib" debug "C:/dspdf/poppler/deps/freetype/lib/freetyped.lib" optimized "C:/dspdf/poppler/deps/lcms/Lib/MS/lcms2_static.lib" debug "C:/dspdf/poppler/deps/lcms/Lib/MS/lcms2_staticd.lib" optimized "C:/dspdf/poppler/deps/fontconfig/lib/libfontconfig.lib" debug "C:/dspdf/poppler/deps/fontconfig/lib/libfontconfigd.lib" optimized "C:/dspdf/poppler/deps/libjpeg-turbo/lib/jpeg-static.lib" debug "C:/dspdf/poppler/deps/libjpeg-turbo/lib/jpeg-staticd.lib" optimized "C:/dspdf/poppler/deps/libpng/lib/libpng16_static.lib" debug "C:/dspdf/poppler/deps/libpng/lib/libpng16_staticd.lib" optimized "C:/dspdf/poppler/deps/libtiff/lib/tiff_static.lib" debug "C:/dspdf/poppler/deps/libtiff/lib/tiff_staticd.lib" optimized "C:/dspdf/poppler/deps/zlib/lib/zlibstatic.lib" debug "C:/dspdf/poppler/deps/zlib/lib/zlibstaticd.lib" optimized "C:/dspdf/poppler/deps/expat/lib/expat.lib" debug "C:/dspdf/poppler/deps/expat/lib/expatd.lib" optimized "C:/dspdf/poppler/deps/openjpeg/lib/openjp2.lib" debug "C:/dspdf/poppler/deps/openjpeg/lib/openjp2d.lib" optimized "C:/dspdf/poppler/deps/libtiff/lib/port.lib" debug "C:/dspdf/poppler/deps/libtiff/lib/portd.lib" optimized "C:/dspdf/poppler/deps/libiconv/lib/libiconvStatic.lib" debug "C:/dspdf/poppler/deps/libiconv/lib/libiconvStaticD.lib" optimized "C:/dspdf/poppler/deps/pixman/lib/pixman-1_static.lib" debug "C:/dspdf/poppler/deps/pixman/lib/pixman-1_staticd.lib")
-     set(POPPLER_INCLUDE_DIRS "C:/dspdf/poppler/poppler/include/poppler/qt5")
+	set(POPPLER_LIBRARIES optimized "C:/dspdf/poppler/poppler/lib/poppler.lib" debug "C:/dspdf/poppler/poppler/lib/popplerd.lib" optimized "C:/dspdf/poppler/poppler/lib/poppler-qt5.lib" debug "C:/dspdf/poppler/poppler/lib/poppler-qt5d.lib" optimized "C:/dspdf/poppler/deps/cairo/lib/cairo-static.lib" debug "C:/dspdf/poppler/deps/cairo/lib/cairo-staticd.lib" optimized "C:/dspdf/poppler/deps/freetype/lib/freetype.lib" debug "C:/dspdf/poppler/deps/freetype/lib/freetyped.lib" optimized "C:/dspdf/poppler/deps/lcms/Lib/MS/lcms2_static.lib" debug "C:/dspdf/poppler/deps/lcms/Lib/MS/lcms2_staticd.lib" optimized "C:/dspdf/poppler/deps/fontconfig/lib/libfontconfig.lib" debug "C:/dspdf/poppler/deps/fontconfig/lib/libfontconfigd.lib" optimized "C:/dspdf/poppler/deps/libjpeg-turbo/lib/jpeg-static.lib" debug "C:/dspdf/poppler/deps/libjpeg-turbo/lib/jpeg-staticd.lib" optimized "C:/dspdf/poppler/deps/libpng/lib/libpng16_static.lib" debug "C:/dspdf/poppler/deps/libpng/lib/libpng16_staticd.lib" optimized "C:/dspdf/poppler/deps/libtiff/lib/tiff_static.lib" debug "C:/dspdf/poppler/deps/libtiff/lib/tiff_staticd.lib" optimized "C:/dspdf/poppler/deps/zlib/lib/zlibstatic.lib" debug "C:/dspdf/poppler/deps/zlib/lib/zlibstaticd.lib" optimized "C:/dspdf/poppler/deps/expat/lib/expat.lib" debug "C:/dspdf/poppler/deps/expat/lib/expatd.lib" optimized "C:/dspdf/poppler/deps/openjpeg/lib/openjp2.lib" debug "C:/dspdf/poppler/deps/openjpeg/lib/openjp2d.lib" optimized "C:/dspdf/poppler/deps/libtiff/lib/port.lib" debug "C:/dspdf/poppler/deps/libtiff/lib/portd.lib" optimized "C:/dspdf/poppler/deps/libiconv/lib/libiconvStatic.lib" debug "C:/dspdf/poppler/deps/libiconv/lib/libiconvStaticD.lib" optimized "C:/dspdf/poppler/deps/pixman/lib/pixman-1_static.lib" debug "C:/dspdf/poppler/deps/pixman/lib/pixman-1_staticd.lib")
+	set(POPPLER_INCLUDE_DIRS "C:/dspdf/poppler/poppler/include/poppler/qt5")
 	# add their include directories
 	list(APPEND LIST_INCLUDE_DIRS ${Qt5Core_INCLUDE_DIRS} ${Qt5Gui_INCLUDE_DIRS} ${Qt5Widgets_INCLUDE_DIRS})
 	# add their link flags
