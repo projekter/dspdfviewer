@@ -30,8 +30,14 @@ option(UseQtFive "Build with Qt5 and libpoppler-qt5" OFF)
 if(UseQtFive)
 	#qt5
 	message(STATUS "Using Qt5 and libpoppler-qt5")
+<<<<<<< HEAD
      set(CMAKE_PREFIX_PATH "C:/Qt/Static/qtbase")
 	find_package(Qt5Core REQUIRED)
+=======
+	find_package(Qt5Core 5.1.1 REQUIRED)
+	# On lower versions, QTBUG-32100 prevents compilation at least on clang
+	# https://bugreports.qt.io/browse/QTBUG-32100
+>>>>>>> origin/master
 	find_package(Qt5Gui REQUIRED)
 	find_package(Qt5Widgets REQUIRED)
      find_package(Qt5XML REQUIRED)	
@@ -113,8 +119,13 @@ elseif(CMAKE_CXX_COMPILER_ID STREQUAL "Clang")
 	add_definitions(-Wno-padded)
 	#   in release mode: Unrechable code / Macro expansion (these stem from QDEBUG)
 	if(NOT CMAKE_BUILD_TYPE STREQUAL "Debug" )
-		add_definitions(-Wno-unreachable-code -Wno-unreachable-code -Wno-disabled-macro-expansion)
+		add_definitions(-Wno-unreachable-code -Wno-disabled-macro-expansion)
 	endif()
+	#   Qt's moc (Meta Object Compiler) generates code that triggers warnings
+	#   about undefined behaviours.
+
+	#   So don't set Werror for it.
+	add_definitions(-Wno-error=undefined-reinterpret-cast)
 else()
 	message(WARNING "Compiling with a Non-GNU compiler. A lot less warnings will be output, so more coding errors might go undetected.")
 endif()
