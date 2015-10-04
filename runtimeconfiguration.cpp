@@ -135,6 +135,10 @@ RuntimeConfiguration::RuntimeConfiguration(int argc, char** argv):
      value<bool>(&m_duplicate)->default_value(false),
      "Duplicates the audience's screen next to the notes on the second screen.\n"
     )
+    ("duplicate,d",
+     value<bool>(&m_duplicate)->default_value(false),
+     "Duplicates the audience's screen next to the notes on the second screen.\n"
+    )
     ("thumbnails,t",
      value<bool>(&m_showThumbnails)->default_value(true),
 	 tr(
