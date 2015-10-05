@@ -54,7 +54,7 @@ int main(int argc, char** argv)
 	const char* const systemQtPath = QTRANSLATE_SYSTEM_PATH ;
 #else
 	/** FIXME: Implement default path and file for Qt5 */
-	const char* const systemQtPath = "/usr/share/qt4/translations";
+	const char* const systemQtPath = "translations";
 #endif
 
 #ifdef QTRANSLATE_SYSTEM_NAME
@@ -77,7 +77,7 @@ int main(int argc, char** argv)
 
 	QTranslator appTranslator;
 	DEBUGOUT << "Loading dspdfviewer_ translation for" << localeName;
-	if ( ! appTranslator.load(QString::fromUtf8("dspdfviewer_").append(localeName) ) ) {
+	if ( ! appTranslator.load(QString::fromUtf8("translations/dspdfviewer_").append(localeName) ) ) {
 		qWarning() << "Failed to load dspdfviewer translation for current locale, falling back to english.";
 	} else {
 		app.installTranslator(&appTranslator);
