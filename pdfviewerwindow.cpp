@@ -24,6 +24,7 @@
 #include <QHBoxLayout>
 #include <QLabel>
 #include <QMouseEvent>
+#include <QWindow>
 #include "debug.h"
 #include <QInputDialog>
 #include <QMessageBox>
@@ -105,10 +106,11 @@ void PDFViewerWindow::reposition()
     return;
   this->setWindowFlags(windowFlags() & ~Qt::FramelessWindowHint);
   this->showNormal();
-  QRect rect = QApplication::desktop()->screenGeometry( numeric_cast<int>(getMonitor()) );
-  move(rect.topLeft());
-  resize( rect.size() );
+  //QRect rect = QApplication::desktop()->screenGeometry( numeric_cast<int>(getMonitor()) );
+  this->windowHandle()->setScreen(QApplication::screens()[numeric_cast<int>(getMonitor())]);
   this->showFullScreen();
+  //move(rect.topLeft());
+  //resize( rect.size() );
   /* Note: The focus should be on the primary window, because at least
    * Gnome draws the primary window's border onto the secondary.
    *
