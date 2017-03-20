@@ -24,7 +24,7 @@
 <p>Note for options of type <i>&lt;bool&gt;</i>: They take <b>true</b>, <b>false</b>, <b>0</b> or <b>1</b> as arguments. For example, <b>--use-second-screen false</b> can be expressed as <b>--use-second-screen 0</b> or shortened to <b>-u0</b>.
 <table>
    <colgroup>
-      <col width="250">
+      <col width="290">
       <col>
    </colgroup>
    <tr>
@@ -60,6 +60,15 @@
           <p>Note: If you set this to zero, you will not get a thumbnail for the next page rendered before you have visited it.</p></td>
    </tr>
    <tr>
+      <td><b>--cache-size</b> <i>n</i> (in megabytes / MiB)</td>
+      <td><p>This controls how much memory dspdfviewer is allowed to use for caching rendered pages.<br />
+             The default value is 1024, meaning 1 GiB of RAM.<br />
+             Note that the memory used for active rendering processes, as well as the currently displayed images are not included in the accounting, so the total memory usage of dspdfviewer will be higher than this.</p>
+          <p>CAVEAT: It is currently not verified that this memory is enough to hold all prerendered pages.<br />
+             If you make the cache too small to hold the prerendered pages, it will start dropping the first rendered (adjacent to the current page), resulting in very poor performance.<br />
+             If in doubt, set a larger cache or a lower prerender amount.</p></td>
+   </tr>
+   <tr>
       <td><b>-a, --presenter-area</b> <i>&lt;bool&gt;</i></td>
       <td><p>Show (true, 1) or hide (false, 0) the presenter&rsquo;s area on the second screen. If this is set to zero, the following options will have no effect.</p>
    </tr>
@@ -71,6 +80,10 @@
    <tr>
       <td><b>-t, --thumbnails</b> <i>&lt;bool&gt;</i></td>
       <td><p>Show (true, 1) or hide (false, 0) the thumbnails on the second screen.</p></td>
+   </tr>
+   <tr>
+      <td><b>-T, --thumbnail-page-part</b> <i>&lt;pagepart&gt;</i></td>
+      <td><p>Show this part of the page for thumbnails, valid values are &quot;left&quot;, &quot;right&quot; or &quot;both&quot;.</p></td>
    </tr>
    <tr>
       <td><b>-w, --wall-clock</b> <i>&lt;bool&gt;</i></td>
