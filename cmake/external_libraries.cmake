@@ -54,7 +54,7 @@ if(UseQtFive)
 				${WINDOWS_PRECOMPILED_STATIC_LIBRARIES}
 			)
 			set(POPPLER_INCLUDE_DIRS
-				"D:/MSVC/ThirdParty/compiled/poppler/include/poppler/qt5"
+				"${CMAKE_SOURCE_DIR}/../ThirdParty/compiled/poppler/include/poppler/qt5"
 			)
 		else() # MSVC, but not statically linking
          message(FATAL_ERROR "Please provide dynamic libraries")
@@ -62,7 +62,7 @@ if(UseQtFive)
 				${WINDOWS_PRECOMPILED_DYNAMIC_LIBRARIES}
 			)
 			set(POPPLER_INCLUDE_DIRS
-				"C:/dspdf/popplerDyn/poppler/include/poppler/qt5"
+				"${CMAKE_SOURCE_DIR}/../ThirdParty/compiled/popplerDyn/poppler/include/poppler/qt5"
 			)
 		endif()
 	else()
